@@ -1,0 +1,16 @@
+<div *ngIf="calendar.user$ | async as user">
+  <h3>Logged in as {{ user.displayName }}</h3>
+  <img src="{{ user.photoURL }}" width="50px">
+  <button (click)="calendar.logout()">Logout</button>
+
+  <button (click)="calendar.getCalendar()">Get Google Calendar</button>
+  <button (click)="calendar.insertEvent()">Add Event</button>
+
+  <div *ngFor="let item of calendar.calendarItems">
+      <h3>{{ item.summary }} - {{ item.status }}</h3>
+      <p><em>Created {{ item.created }}</em></p>
+      <p>{{ item.description }}</p>
+  </div>
+</div>
+
+<button (click)="calendar.login()">Login with Google</button>
